@@ -23,15 +23,17 @@ test('renders the world without horizontal overflow', async ({ page }, testInfo)
 })
 
 test('mobile controls remain inside the safe viewport', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'mobile-chromium', 'Mobile-only geometry assertion')
+  test.skip(testInfo.project.name === 'desktop-chromium', 'Mobile-only geometry assertion')
   await page.goto('/')
+
+  const viewport = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }))
 
   for (const id of ['joystick', 'action-cluster']) {
     const box = await page.getByTestId(id).boundingBox()
     expect(box).not.toBeNull()
     expect(box!.x).toBeGreaterThanOrEqual(0)
     expect(box!.y).toBeGreaterThanOrEqual(0)
-    expect(box!.x + box!.width).toBeLessThanOrEqual(412)
-    expect(box!.y + box!.height).toBeLessThanOrEqual(915)
+    expect(box!.x + box!.width).toBeLessThanOrEqual(viewport.width)
+    expect(box!.y + box!.height).toBeLessThanOrEqual(viewport.height)
   }
 })

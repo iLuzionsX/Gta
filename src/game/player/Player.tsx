@@ -10,7 +10,7 @@ const right = new THREE.Vector3()
 
 function StreetwearAvatar() {
   return (
-    <group position={[0, -0.02, 0]}>
+    <group position={[0, 0.18, 0]}>
       <mesh castShadow position={[0, 1.24, 0]}>
         <capsuleGeometry args={[0.34, 0.72, 5, 10]} />
         <meshStandardMaterial color="#10131a" roughness={0.78} />
@@ -78,7 +78,7 @@ export function Player() {
   })
 
   return (
-    <RigidBody ref={body} colliders={false} lockRotations position={[0, 2.2, 9]} friction={0.4} linearDamping={4.6}>
+    <RigidBody ref={body} colliders={false} lockRotations position={[0, 0.02, 9]} friction={0.4} linearDamping={4.6}>
       <CapsuleCollider args={[0.64, 0.4]} position={[0, 1.03, 0]} />
       <group ref={avatar}>
         <StreetwearAvatar />

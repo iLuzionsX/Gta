@@ -152,6 +152,16 @@ export function StarterDistrict() {
         </mesh>
       </RigidBody>
 
+      <RigidBody type="fixed" colliders={false}>
+        {buildings.map((spec, index) => (
+          <CuboidCollider
+            key={`building-collider-${index}`}
+            args={[spec.width / 2, spec.height / 2, spec.depth / 2]}
+            position={[spec.x, spec.height / 2, spec.z]}
+          />
+        ))}
+      </RigidBody>
+
       {Array.from({ length: 18 }).map((_, index) => (
         <mesh key={index} position={[0, 0.045, -82 + index * 10]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[0.15, 4]} />

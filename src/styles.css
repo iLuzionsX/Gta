@@ -37,7 +37,7 @@ button { font: inherit; }
 .radar-player { position: absolute; left: 63px; top: 61px; width: 10px; height: 14px; clip-path: polygon(50% 0,100% 100%,50% 77%,0 100%); background: #fff4dd; filter: drop-shadow(0 0 5px #f4ad5a); }
 .radar span { position: absolute; left: 20px; bottom: 14px; color: rgba(255,255,255,.42); font-size: 8px; font-weight: 800; letter-spacing: .16em; }
 
-.look-zone { position: absolute; z-index: 1; inset: 0 0 0 42%; pointer-events: auto; touch-action: none; }
+.look-zone { position: absolute; z-index: 1; inset: 0 0 0 42%; pointer-events: none; touch-action: none; }
 .joystick { display: none; position: absolute; z-index: 4; left: max(22px, env(safe-area-inset-left)); bottom: max(22px, env(safe-area-inset-bottom)); width: 116px; height: 116px; pointer-events: auto; touch-action: none; }
 .joystick-ring { position: absolute; inset: 8px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.07), rgba(5,8,11,.28)); backdrop-filter: blur(7px); box-shadow: inset 0 0 26px rgba(255,255,255,.03); }
 .joystick-nub { position: absolute; inset: 31px; border-radius: 50%; background: rgba(250,248,239,.78); box-shadow: 0 5px 18px rgba(0,0,0,.26); }
@@ -56,6 +56,7 @@ button { font: inherit; }
   .radar-road-h { top: 48px; }
   .radar-player { left: 43px; top: 41px; }
   .radar span { left: 13px; bottom: 10px; font-size: 7px; }
+  .look-zone { pointer-events: auto; }
   .joystick, .action-cluster { display: flex; }
   .desktop-hint { display: none; }
 }
