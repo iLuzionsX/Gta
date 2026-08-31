@@ -13,14 +13,20 @@ Open the local URL, tap **Take the run**, then use the touch joystick and **RUN*
 
 ## Qwen delegation
 
-`scripts/qwen-agents.mjs` fans out three independent reviews through Inferway’s OpenAI-compatible endpoint. Keep the key server-side:
+`scripts/qwen-agents.mjs` fans out three independent Qwen roles—creative director, mobile engineer, and world designer—against the current repo context. The lead engineer integrates the returned decisions:
+
+```bash
+npm run qwen:agents
+```
+
+Inferway permits keyless requests under its free-use caps; set `INFERWAY_API_KEY` later for an authenticated account:
 
 ```bash
 export INFERWAY_API_KEY="inferway_live_..."
-node scripts/qwen-agents.mjs
+npm run qwen:agents
 ```
 
-The app itself does not ship an API key to the browser. The current model is `inferway/qwen3.8-27b` at `https://api.inferway.ai/v1`.
+The app itself never ships an API key to the browser. The model is `inferway/qwen3.8-27b` at `https://api.inferway.ai/v1`.
 
 ## Checks
 
