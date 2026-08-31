@@ -81,13 +81,13 @@ export function GameWorld({ started, joystick, sprinting, onSnapshot }: WorldPro
     lastUiUpdate.current += delta;
     if (lastUiUpdate.current > 0.12) {
       lastUiUpdate.current = 0;
-      const target = missionPhase.current === 'drop' ? dropPoint : pickupPoint;
+      const target = missionPhase.current === 'pickup' ? pickupPoint : dropPoint;
       onSnapshot({
         phase: missionPhase.current,
         progress: Math.round(progress.current),
         heat: Math.round(heat.current),
         score: score.current,
-        distance: started ? playerPosition.current.distanceTo(target) : 0,
+        distance: !started || missionPhase.current === 'complete' ? 0 : playerPosition.current.distanceTo(target),
         player: { x: ((playerPosition.current.x + 43) / 86) * 100, y: ((playerPosition.current.z + 39) / 78) * 100 },
       });
     }
@@ -151,7 +151,7 @@ function StreetGrid() {
   const roads = [-30, -10, 10, 30];
   return (
     <group>
-      <mesh position={[0, -0.25, 0]} receiveShadow><planeGeometry args={[92, 84]} /><meshStandardMaterial color="#26202d" roughness={0.95} /></mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.25, 0]} receiveShadow><planeGeometry args={[92, 84]} /><meshStandardMaterial color="#26202d" roughness={0.95} /></mesh>
       {roads.map((coordinate) => <group key={coordinate}>
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[coordinate, -0.16, 0]}><planeGeometry args={[8, 84]} /><meshStandardMaterial color="#101117" roughness={0.94} /></mesh>
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.15, coordinate]}><planeGeometry args={[92, 8]} /><meshStandardMaterial color="#101117" roughness={0.94} /></mesh>
