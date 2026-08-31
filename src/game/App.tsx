@@ -129,14 +129,14 @@ function Hud({ mission, started, onRestart }: { mission: MissionSnapshot; starte
 
 function MiniMap({ mission }: { mission: MissionSnapshot }) {
   const player = mission.player ?? { x: 50, y: 58 };
-  const target = mission.phase === 'drop' ? { x: 78, y: 25 } : { x: 28, y: 70 };
+  const target = mission.phase === 'pickup' ? { x: 28, y: 70 } : { x: 78, y: 25 };
   return (
     <section className="minimap-panel glass-card" aria-label="District minimap">
       <div className="map-header"><span>LOWER MERIDIAN</span><span className="map-live">● REC</span></div>
       <div className="minimap">
         <div className="map-road road-a" /><div className="map-road road-b" /><div className="map-road road-c" />
         <div className="map-block block-a" /><div className="map-block block-b" /><div className="map-block block-c" />
-        <span className="map-target" style={{ left: `${target.x}%`, top: `${target.y}%` }}>◆</span>
+        {mission.phase !== 'complete' && <span className="map-target" style={{ left: `${target.x}%`, top: `${target.y}%` }}>◆</span>}
         <span className="map-player" style={{ left: `${player.x}%`, top: `${player.y}%` }} />
       </div>
       <div className="map-footer"><span>◉ NORTH</span><span>07:43 PM</span></div>
