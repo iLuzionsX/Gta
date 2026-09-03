@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "qwen:agents": "node scripts/qwen-agents.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",
