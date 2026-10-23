@@ -76,7 +76,7 @@ Brilla... (brilla)
 | Coro | 1:43–2:12 | 8 |
 | Outro | 2:12–2:30 | 3 |
 
-About 175 words, inside the 150–190 budget for a 2:30 atmospheric track.
+About 183 sung words (193 counting the echoes in parentheses), inside the 150–190 budget for a 2:30 atmospheric track.
 
 ## How it's built
 
